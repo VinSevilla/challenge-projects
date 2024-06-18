@@ -84,6 +84,34 @@ Each game method includes detailed instructions and validation for user input to
 - Implement additional games.
 - Enhance the scoring system to include a leaderboard.
 
+## Learning Section
+
+### Key Concepts I Learned While Developing This Program...
+
+#### Main Menu Creation
+
+- **Designing User Navigation:** I learned how to design a main menu for a console application, which allows users to navigate through different options seamlessly.
+- **Implementing Looping Constructs:** I utilized looping constructs to continuously display the main menu until the user decides to exit, ensuring a smooth user experience.
+- **Handling User Selections:** I became proficient in handling user selections and linking menu options to corresponding functionalities within the application.
+
+#### User Input Validation
+
+- **Ensuring Valid Inputs:** I gained experience in validating user inputs to ensure that the application only processes valid data, enhancing the reliability of the program.
+- **Providing User Feedback:** I learned how to provide meaningful feedback to users when they enter invalid inputs, guiding them to make correct choices.
+- **Avoiding Application Crashes:** By implementing input validation, I reduced the risk of application crashes due to unexpected or incorrect inputs.
+
+#### Error Handling
+
+- **Improving Robustness:** Implementing comprehensive error handling improved the overall robustness of the application, making it more resilient to user errors and unforeseen circumstances.
+
+#### Additional Insights
+
+- **Modular Code Design:** I understood the importance of breaking code into smaller, reusable methods. This approach makes the code more organized and easier to maintain.
+- **Documentation:** I realized the significance of documenting code with comments and Javadoc to explain the purpose of methods and complex logic, which aids in future maintenance and collaboration.
+- **Testing:** I appreciated the necessity of testing various user inputs to ensure that the application handles all scenarios correctly, providing a better user experience.
+- **Edge Cases:** I learned to consider and handle edge cases, such as non-numeric input when a number is expected, to improve the robustness and reliability of the application.
+
+
 ## Author
 Venancio Sevilla
 
