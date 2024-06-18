@@ -19,11 +19,11 @@ You are positioned in a field represented by a grid of cells. Your goal is to mo
    - Ensure you have Node.js installed on your machine.
 
 2. **Setup**
-   - Clone the repository or download the `index.js` file.
-   - Open a terminal and navigate to the directory where `index.js` is located.
+   - Clone the repository or download the `main.js` file.
+   - Open a terminal and navigate to the directory where `main.js` is located.
 
 3. **Running the Game**
-   - Run the program using Node.js: `node index.js`.
+   - Run the program using Node.js: `node main.js`.
    - Follow the on-screen instructions to play the game.
 
 4. **Game Rules**
