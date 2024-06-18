@@ -64,3 +64,7 @@ The game is implemented in JavaScript using Node.js. Here's a brief overview of 
 - **generateField Function**: Creates a random field with a player, hat, and holes.
 - **updateField Function**: Updates the field with the player's position after each move.
 - **Game Loop**: Handles user input and controls the game flow until the player wins or loses.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
