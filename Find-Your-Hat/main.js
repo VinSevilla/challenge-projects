@@ -102,8 +102,8 @@ console.log("S - Move down");
 console.log("D - Move right");
 console.log();
 
-//console.log("GENERATED FIELD:");
-//myField.print();
+console.log("GENERATED FIELD:");
+myField.print();
 
 const promptUser = () => {
     return new Promise(resolve => {
@@ -115,6 +115,7 @@ const promptUser = () => {
 
 const gameLoop = async () => {
     while (true) {
+        console.log();
         const userInput = await promptUser();
 
         switch (userInput) {
@@ -167,6 +168,8 @@ const gameLoop = async () => {
 
         console.clear(); // Clear the terminal before printing the updated field
         updateField(myField, playerIndex);
+        console.log();
+        console.log('CURRENT FIELD: ');
         myField.print();
     }
 
