@@ -84,7 +84,7 @@ Each game method includes detailed instructions and validation for user input to
 - Implement additional games.
 - Enhance the scoring system to include a leaderboard.
 
-## Learning Section
+## Learning 
 
 ### Key Concepts I Learned While Developing This Program...
 
