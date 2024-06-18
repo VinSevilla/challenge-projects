@@ -74,5 +74,30 @@ organism.willLikelySurvive();
 Contributing
 Contributions to the Mysterious Organism Simulator are welcome! If you have suggestions for improvements or new features, please open an issue or submit a pull request on GitHub.
 
+## Learning Section
+
+### What I Learned from Creating the DNA Simulation Program
+
+#### Factory Functions
+
+- **Understanding Factory Functions:** I learned how to create factory functions to generate objects with specific properties and methods. This approach is useful for creating multiple instances of an object with similar structures and behaviors.
+- **Usage in JavaScript:** Implemented the `pAequorFactory` function to generate organisms with unique specimen numbers and DNA arrays.
+
+#### Random DNA Generation
+
+- **Generating Random Bases:** Utilized the `Math.random()` function to randomly select DNA bases ('A', 'T', 'C', 'G') and create a strand of DNA.
+- **Mock DNA Strand Creation:** Wrote the `mockUpStrand` function to generate a random strand of DNA with 15 bases, showcasing array manipulation and random value generation.
+
+#### Object Methods
+
+- **Mutate Method:** Implemented a `mutate` method to randomly change one base in the DNA strand to a different base. This taught me about array manipulation and ensuring no two values are the same using a `while` loop.
+- **Comparing DNA:** Developed a `compareDna` method to compare the DNA of two organisms and calculate the percentage of similarity. This involved iterating over arrays, counting matches, and performing percentage calculations.
+- **Survival Check:** Created a `willLikelySurvive` method to determine if an organism is likely to survive based on the presence of 'C' and 'G' bases. This method uses the `filter` function to count specific bases and conditional logic to check the survival rate.
+
+#### Populating Data
+
+- **Creating Multiple Organisms:** Learned to use loops and conditionals to populate an array with multiple instances of organisms that meet certain criteria (e.g., having a 60% or more survival rate).
+
+
 License
 This project is licensed under the MIT License.
