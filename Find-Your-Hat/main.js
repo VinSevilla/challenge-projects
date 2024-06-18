@@ -26,26 +26,84 @@ const updateField = (fieldObj, playerIndex) => {
     fieldObj.fieldArray[playerIndex[0]][playerIndex[1]] = pathCharacter;
 }
 
-const myField = new Field([
-    ['*', '░', 'O'],
-    ['░', 'O', '░'],
-    ['░', '^', '░'],
-]);
+const generateField = () => {
+    // Initialize an empty 2D array
+    const randomField = [];
 
-process.stdout.write("Welcome to Find Your Hat!\n");
+    // Determine dimensions of the field (rows and columns)
+    const numRows = Math.floor(Math.random() * (15 - 5 + 1)) + 5; // Random number of rows between 5 and 15
+    const numCols = Math.floor(Math.random() * (15 - 5 + 1)) + 5; // Random number of columns between 5 and 15
+
+    // Populate the field with empty cells
+    for (let i = 0; i < numRows; i++) {
+        const row = new Array(numCols).fill(fieldCharacter); // Fill each row with fieldCharacter (░)
+        randomField.push(row);
+    }
+
+    // Generate random positions for the player, hat, and holes
+    let playerPositionY = Math.floor(Math.random() * numRows);
+    let playerPositionX = Math.floor(Math.random() * numCols);
+
+    let hatPositionY = Math.floor(Math.random() * numRows);
+    let hatPositionX = Math.floor(Math.random() * numCols);
+
+    // Ensure player and hat do not overlap
+    while (playerPositionY === hatPositionY && playerPositionX === hatPositionX) {
+        hatPositionY = Math.floor(Math.random() * numRows);
+        hatPositionX = Math.floor(Math.random() * numCols);
+    }
+
+    // Place the player and hat in the field
+    randomField[playerPositionY][playerPositionX] = pathCharacter;
+    randomField[hatPositionY][hatPositionX] = hat;
+
+    // Update playerIndex to reflect player's starting position
+    const playerIndex = [playerPositionY, playerPositionX];
+
+    // Generate three random hole positions
+    for (let i = 0; i < 3; i++) {
+        let holePositionY = Math.floor(Math.random() * numRows);
+        let holePositionX = Math.floor(Math.random() * numCols);
+
+        // Ensure holes do not overlap with player or hat
+        while ((holePositionY === playerPositionY && holePositionX === playerPositionX) ||
+               (holePositionY === hatPositionY && holePositionX === hatPositionX)) {
+            holePositionY = Math.floor(Math.random() * numRows);
+            holePositionX = Math.floor(Math.random() * numCols);
+        }
+
+        // Place the hole in the field
+        randomField[holePositionY][holePositionX] = hole;
+    }
+
+    return {
+        field: randomField,
+        playerIndex: playerIndex
+    };
+}
+
+//Test field
+const fieldAndPlayer = generateField();
+const myField = new Field(fieldAndPlayer.field);
+let playerIndex = fieldAndPlayer.playerIndex;
+
+console.log("Welcome to Find Your Hat!");
 console.log();
-process.stdout.write("Objective: You are positioned in a randomly generated field and must move towards your hat (^) without falling into holes (O).\n");
+console.log("Objective: You are positioned in a randomly generated field and must move towards your hat (^) without falling into holes (O).");
 console.log();
-process.stdout.write("Your position - *\nYour hat - ^\nHoles - O\n");
+console.log("Your position - *");
+console.log("Your hat - ^");
+console.log("Holes - O");
 console.log();
-process.stdout.write("Controls:\nW - Move up\nA - Move left\nS - Move down\nD - Move right\n");
+console.log("Controls:");
+console.log("W - Move up");
+console.log("A - Move left");
+console.log("S - Move down");
+console.log("D - Move right");
 console.log();
 
-process.stdout.write("GENERATED FIELD:\n");
-myField.print();
-
-let playerIndex = [0, 0]; // Initial player position
-let hatIndex = [2, 1]; // Assuming fixed hat position for simplicity
+//console.log("GENERATED FIELD:");
+//myField.print();
 
 const promptUser = () => {
     return new Promise(resolve => {
@@ -56,7 +114,7 @@ const promptUser = () => {
 }
 
 const gameLoop = async () => {
-    while (!(playerIndex[0] === hatIndex[0] && playerIndex[1] === hatIndex[1])) {
+    while (true) {
         const userInput = await promptUser();
 
         switch (userInput) {
@@ -65,6 +123,7 @@ const gameLoop = async () => {
                     playerIndex[0]--;
                 } else {
                     console.log("Invalid move. You're at the top edge.");
+                    continue;
                 }
                 break;
             case 'a':
@@ -72,6 +131,7 @@ const gameLoop = async () => {
                     playerIndex[1]--;
                 } else {
                     console.log("Invalid move. You're at the left edge.");
+                    continue;
                 }
                 break;
             case 's':
@@ -79,6 +139,7 @@ const gameLoop = async () => {
                     playerIndex[0]++;
                 } else {
                     console.log("Invalid move. You're at the bottom edge.");
+                    continue;
                 }
                 break;
             case 'd':
@@ -86,6 +147,7 @@ const gameLoop = async () => {
                     playerIndex[1]++;
                 } else {
                     console.log("Invalid move. You're at the right edge.");
+                    continue;
                 }
                 break;
             default:
@@ -98,12 +160,14 @@ const gameLoop = async () => {
             break;
         }
 
+        if (myField.fieldArray[playerIndex[0]][playerIndex[1]] === hat) {
+            console.log("Congratulations! You found your hat!");
+            break;
+        }
+
+        console.clear(); // Clear the terminal before printing the updated field
         updateField(myField, playerIndex);
         myField.print();
-    }
-
-    if (playerIndex[0] === hatIndex[0] && playerIndex[1] === hatIndex[1]) {
-        console.log("Congratulations! You found your hat!");
     }
 
     rl.close();
