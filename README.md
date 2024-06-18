@@ -12,4 +12,4 @@ I welcome contributions, feedback, and suggestions on any of the projects in thi
 
 ## Contact
 
-If you have any questions or would like to connect, you can reach me at [vls.sevilla@gmail.com].
+If you have any questions or would like to connect, you can reach me at vls.sevilla@gmail.com
