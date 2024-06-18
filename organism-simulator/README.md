@@ -98,6 +98,6 @@ Contributions to the Mysterious Organism Simulator are welcome! If you have sugg
 
 - **Creating Multiple Organisms:** Learned to use loops and conditionals to populate an array with multiple instances of organisms that meet certain criteria (e.g., having a 60% or more survival rate).
 
+## License
 
-License
-This project is licensed under the MIT License.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
