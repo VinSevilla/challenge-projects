@@ -31,6 +31,22 @@ The program uses arrays of setups and finishers for both fortune readings and jo
   ```
   Why did the chicken cross the road? To save the world!
   ```
+## Learning 
+
+### What I Learned from Creating the Message Constructor Program
+
+#### Functions to Manipulate Arrays
+
+- **Creating Reusable Functions:** I learned to create reusable functions that can operate on arrays, enhancing the modularity and readability of the code.
+- **Random Selection from Arrays:** I implemented logic to randomly select elements from arrays, which is crucial for generating varied outputs. This involved using `Math.random()` and `Math.floor()`.
+- **Combining Elements from Multiple Arrays:** I combined elements from multiple arrays to construct messages, understanding how to dynamically build strings using array elements.
+- **Handling Multiple Sets of Data:** I managed multiple sets of arrays (`fortuneSetups`, `fortuneFinishers`, `jokeSetups`, `jokeFinishers`) and passed them to the function to generate different types of messages.
+
+#### Specific Techniques and Concepts
+
+- **Array Manipulation:** I practiced accessing and manipulating arrays, including selecting random elements and concatenating strings.
+- **Function Parameters:** I gained experience in defining functions with parameters, allowing for flexibility in handling various sets of inputs.
+- **Template Literals and String Concatenation:** I used string concatenation to build the final message from selected array elements, reinforcing my understanding of how to combine strings dynamically.
 
 ## Customization
 
