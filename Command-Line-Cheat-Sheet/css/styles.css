@@ -15,7 +15,21 @@ h2{
 }
 
 .command-table{
+    margin: auto;
     margin-top: 20px;
     border: solid black 1px;
     position: relative;
+    border-collapse: collapse;
+
+}
+
+.command-table th, .command-table td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+
+span{
+    background-color: black;
+    color: white;
 }
