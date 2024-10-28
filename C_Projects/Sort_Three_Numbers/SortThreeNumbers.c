@@ -26,7 +26,7 @@ int main()
         printf("%c", 196);
         line++;
     }
-
+    printf("\n");
     int a;
     int b;
     int c;
@@ -34,10 +34,10 @@ int main()
     printf("Please enter the first number: ");
     scanf("%d", &a);
     printf("\n");
-    printf("Please enter the second number: \n");
+    printf("Please enter the second number: ");
     scanf("%d", &b);
     printf("\n");
-    printf("Please enter the third number: \n");
+    printf("Please enter the third number: ");
     scanf("%d", &c);
     printf("\n");
 
