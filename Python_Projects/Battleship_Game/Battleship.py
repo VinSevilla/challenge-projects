@@ -48,28 +48,54 @@ class MenuNavigation:
 
         -------------------------------------------------------------------------------------------------------
         """))
-        #explain 1 ship each in a  5x5 map
-        def standoff():
+        
+    def game_mode(self):
+        userInput = int(input((dedent(""" 
+        SELECT GAME MODE
+        ----------------
 
-    
-    def play_with_friend(self, game_mode):
-        print(dedent(""" 
+        1.) Standard 
+            (Regular battleship rules on a 10x10 grid)
+        2.) Standoff
+            (Both players each with a one cell ship on a 3x3 grid.)
         
-        
-        
-        """))
-
+        User: 
+        """))))
+        return userInput
 
 class Player:
-    def __init__(self, name):
-        self.name(username)
+    def __init__(self, name, board_orientation = []):
+        self.name = name
+        
+    
+    def set_board(self, self.board_orientation):
+        grid = [[0 for _ in range(10)] for _ in range(10)]
+        
+
+class GameLogic:
+    def __init__(self, play_with_friend, game_mode, player1, player2):
+        self.play_with_friend = play_with_friend
+        self.game_mode = game_mode
+        self.player1 = player1
+        self.player2 = player2
+        self.board2 = board2
 
 
+menu = MenuNavigation()
+menu.main()
 
-action = MenuNavigation()
-action.main()
 userInput = int(input("User: "))
+game_mode = 0
+play_with_friend == False
 if userInput == 1:
-    action.rules()
+    menu.rules()
 else if userInput == 2:
-    action.play_with_friend()
+    game_mode = menu.game_mode()
+else if userInput == 3:
+    game_mode = menu.game_mode()
+    play_with_friend == True
+    player1 = int(input("Enter username for player1: "))
+    player2 = int(input("Enter username for player2: "))
+    play_with_friend_game = GameLogic(play_with_friend, game_mode,)
+
+
