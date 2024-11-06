@@ -50,22 +50,32 @@ class MenuNavigation:
         """))
         
     def game_mode(self):
-        userInput = int(input((dedent(""" 
-        SELECT GAME MODE
-        ----------------
+    while True:
+        try:
+            userInput = int(input(dedent("""
+            SELECT GAME MODE
+            ----------------
 
-        1.) Standard 
-            (Regular battleship rules on a 10x10 grid)
-        
-        2.) Standoff
-            (Both players each with a one cell ship on a 3x3 grid.)
-        
-        User: 
-        """))))
-        return userInput
+            1.) Standard 
+                (Regular battleship rules on a 10x10 grid)
+
+            2.) Standoff
+                (Both players each with a one cell ship on a 3x3 grid.)
+
+            User: 
+            """)))
+            if userInput in [1, 2]:
+                return userInput
+            else:
+                print("Invalid choice, please choose 1 or 2.")
+        except ValueError:
+            print("Invalid input! Please enter a number.")
     
-    def play_with_friends_instructions(self):
-        
+    def play_with_friends_instructions(self,username):
+        print(dedent(f"""
+        ${username} please enter the coordinates range of the corresponding size cell ships
+        """))
+
 
 #Player class with name  and  their ship  orientation
 class Player:
@@ -75,10 +85,38 @@ class Player:
     
     def display_board(self):
         print(f"{self.name}'s Board:")
-        for row in self.board_orientation:
-            print(" ".join(str(cell) for cell in row))
-        print()
 
+        # Column headers (1-10)
+        print("   " + " ".join(str(num) for num in range(1, 11)))
+        
+        # Row headers (A-J) and board content
+        row_labels = "ABCDEFGHIJ"
+        for i, row in enumerate(self.board_orientation):
+            print(row_labels[i] + "  " + " ".join(str(cell) for cell in row))
+        
+    def set_ships(self):
+        # Let's assume ships sizes are [5, 4, 3, 3, 2] for carrier, battleship, cruiser, submarine, and destroyer
+        ships = {"Carrier": 5, "Battleship": 4, "Cruiser": 3, "Submarine": 3, "Destroyer": 2}
+        ships_placed = 0
+        while ships_placed < len(ships):
+            print(f"Placing {list(ships.keys())[ships_placed]}")
+            # Example: For simplicity, you might use hard-coded coordinates or prompt the player to enter them.
+            # Just an example for now:
+            x = int(input("Enter row (1-10): ")) - 1  # Convert to 0-based index
+            y = int(input("Enter column (1-10): ")) - 1  # Convert to 0-based index
+            direction = input("Enter direction (H for horizontal, V for vertical): ").upper()
+
+            # Check if the ship fits in the grid
+            if direction == 'H' and y + ships[list(ships.keys())[ships_placed]] <= 10:
+                for i in range(ships[list(ships.keys())[ships_placed]]):
+                    self.board_orientation[x][y + i] = 'S'  # 'S' marks a ship
+                ships_placed += 1
+            elif direction == 'V' and x + ships[list(ships.keys())[ships_placed]] <= 10:
+                for i in range(ships[list(ships.keys())[ships_placed]]):
+                    self.board_orientation[x + i][y] = 'S'
+                ships_placed += 1
+            else:
+                print("Invalid position, try again.")
         
 
 class GameLogic:
