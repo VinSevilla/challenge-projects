@@ -19,9 +19,9 @@ class MenuNavigation:
         print("""
         1. View rules
 
-        2. Play against a friend.
+        2. Play against AI.
 
-        3. Play against AI.
+        3. Play with a friend.
         """)
 
 
@@ -56,20 +56,29 @@ class MenuNavigation:
 
         1.) Standard 
             (Regular battleship rules on a 10x10 grid)
+        
         2.) Standoff
             (Both players each with a one cell ship on a 3x3 grid.)
         
         User: 
         """))))
         return userInput
-
-class Player:
-    def __init__(self, name, board_orientation = []):
-        self.name = name
-        
     
-    def set_board(self, self.board_orientation):
-        grid = [[0 for _ in range(10)] for _ in range(10)]
+    def play_with_friends_instructions(self):
+        
+
+#Player class with name  and  their ship  orientation
+class Player:
+    def __init__(self, name, board_orientation = [['_' for _ in range(10)] for _ in range(10)] ):
+        self.name = name[0].upper() + name[1:len(name)]
+        self.board_orientation  =  board_orientation
+    
+    def display_board(self):
+        print(f"{self.name}'s Board:")
+        for row in self.board_orientation:
+            print(" ".join(str(cell) for cell in row))
+        print()
+
         
 
 class GameLogic:
@@ -79,6 +88,7 @@ class GameLogic:
         self.player1 = player1
         self.player2 = player2
         self.board2 = board2
+    
 
 
 menu = MenuNavigation()
@@ -86,16 +96,21 @@ menu.main()
 
 userInput = int(input("User: "))
 game_mode = 0
-play_with_friend == False
+play_with_friend = False
 if userInput == 1:
     menu.rules()
-else if userInput == 2:
+elif userInput == 2:
     game_mode = menu.game_mode()
-else if userInput == 3:
+elif userInput == 3:
     game_mode = menu.game_mode()
     play_with_friend == True
-    player1 = int(input("Enter username for player1: "))
-    player2 = int(input("Enter username for player2: "))
-    play_with_friend_game = GameLogic(play_with_friend, game_mode,)
+    
+    player1_username = input("Enter username for player1: ")
+    player1 = Player(player1_username)
+    print()
+
+    
+    #player2_username = int(input("Enter username for player2: "))
+    #play_with_friend_game = GameLogic(play_with_friend, game_mode,)
 
 
